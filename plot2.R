@@ -1,0 +1,8 @@
+library(lubridate)
+power<-read.csv('household_power_cons_subset_feb1and2_2007.csv')
+#days<-weekdays(as.Date(power$Date,'%Y/%m/%d'))
+date_time<-paste(power$Date,power$Time, sep = " ")
+posix_date_time<-dmy_hms(date_time)
+png(file = "plot2.png",width = 480, height = 480, units = "px")
+plot(posix_date_time,power$Global_active_power, type='l',xlab="",ylab="Global Active Power (kilowatts)")
+dev.off()
